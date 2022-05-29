@@ -350,7 +350,11 @@ if __name__ == "__main__":
                                class_dict=CLASS_TO_IDX)
     datamodule.setup()
 
-    model = KWSModel(num_classes=args.num_classes, epochs=args.max_epochs, lr=args.lr,)
+    data = iter(datamodule.train_dataloader()).next()
+    patch_dim = data[0].shape[-1]
+    seqlen = data[0].shape[-2]
+
+    model = KWSModel(num_classes=args.num_classes, epochs=args.max_epochs, lr=args.lr, patch_dim=patch_dim, seqlen=seqlen)
     print(model)
     
     model_checkpoint = ModelCheckpoint(
