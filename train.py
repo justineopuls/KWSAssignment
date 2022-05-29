@@ -315,7 +315,7 @@ def get_args():
 
     # 16-bit fp model to reduce the size
     parser.add_argument("--precision", default=16)
-    parser.add_argument("--accelerator", default='cpu')
+    parser.add_argument("--accelerator", default='gpu')
     parser.add_argument("--devices", default=1)
     parser.add_argument("--num-workers", type=int, default=12)
 
